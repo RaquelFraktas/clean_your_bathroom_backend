@@ -7,19 +7,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    user= User.find_or_create_by(user_params)
-    if user.save
-      session[:id] = user.id
-    end
-    byebug
-    #posting data wouldnt work without this method
+    user= User.find_or_create_by(:username)
     render json: user
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.permit(:username)
   end
   
 end
