@@ -7,13 +7,14 @@ class UsersController < ApplicationController
 
   def create
     user= User.find_or_create_by(user_params)
+   
     render json: user
   end
 
   def update
-    user = User.find(params[:user][:id])
+    user= User.find(params[:id])
     byebug
-    points = Score.create()
+    # Score.new(points: )
     game_points = [points]
     user.scores << game_points
     render json: user
