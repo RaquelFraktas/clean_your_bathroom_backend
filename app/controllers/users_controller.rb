@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # wrap_parameters :user, include: [:username, :password]
 
   def index
     users= User.all
@@ -7,9 +6,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    user= User.find_or_create_by(:username)
+    user= User.find_or_create_by(user_params)
     render json: user
   end
+
+  def update
+    user = User.find(params[:user][:id])
+    byebug
+    points = Score.create()
+    game_points = [points]
+    user.scores << game_points
+    render json: user
+  end
+
+
+  # def current_user
+  #   return 
+  # end
 
   private
 

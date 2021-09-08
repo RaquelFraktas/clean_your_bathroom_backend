@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: "bigboi666", password: "bigmoni")
+User.create(username: "bigboi666")
 
 puts "database has been seeded"
