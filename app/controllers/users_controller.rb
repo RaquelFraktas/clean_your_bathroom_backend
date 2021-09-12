@@ -12,22 +12,15 @@ class UsersController < ApplicationController
 
   def update
     user= User.find(params[:id])
-    score = Score.new(points: params[:_json])
-    accumulated_score += score.to_i
-    # game_over = params[:]
-    byebug
-    if accumulated_score == 700 || game_over
-      user.Score.create(points: accumulated_score)
+    score = Score.find_or_create_by(points: params[:_json])
+    if !user.scores.include?(score)
+      user.scores << score
     end
-    # game_points = [points]
-    # user.scores << game_points
+    # why are different scores being byebugged?
+    byebug
     render json: user
   end
 
-
-  # def current_user
-  #   return 
-  # end
 
   private
 
