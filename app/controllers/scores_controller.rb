@@ -1,8 +1,9 @@
 class ScoresController < ApplicationController
 
-#   def update
-#     user = 
-#     score += points
-#   end
+  def index
+    scores= Score.all
+    render json: scores
+  end
+    
 
 end

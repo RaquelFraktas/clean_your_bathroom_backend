@@ -1,3 +1,6 @@
 class ScoreSerializer < ActiveModel::Serializer
-    attributes :id, :points, :user
-  end
+  attributes :id, :points
+  belongs_to :user
+
+
+end
