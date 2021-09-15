@@ -10,16 +10,17 @@ class UsersController < ApplicationController
     render json: user
   end
 
-  def update
-    user= User.find(params[:id])
-    score = Score.find_or_create_by(points: params[:_json])
-    if !user.scores.include?(score)
-      user.scores << score
-    end
-    # why are different scores being byebugged?
-    byebug
-    render json: user
-  end
+  # def update
+  #   user= User.find(params[:id])
+  #   score = Score.find_or_create_by(points: params[:_json])
+  #   # this needs to be unique by user- check the find or create under that user.id
+  #   if !user.scores.include?(score)
+  #     user.scores << score
+  #     #dont really need this line if we are using find_or_create_by
+  #   end
+  #   byebug
+  #   render json: user
+  # end
 
 
   private
