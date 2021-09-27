@@ -8,7 +8,7 @@ class ScoresController < ApplicationController
   def create
     user= User.find(params[:user][:id])
     score = Score.new(points: params[:allPoints])
-    if !user.scores.find_by(points: score.points)
+    if !user.scores.find_by(points: score.points) && score.points != 0
       user.scores << score
       user.save
     end
